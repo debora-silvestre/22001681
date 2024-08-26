@@ -1,0 +1,14 @@
+//código para sistema de recepção
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main ()
+{
+    //criação de variáveis
+    int visitantes;
+    printf("\nDigite o número de visitantes: ");
+    scanf("%i", &visitantes);
+    printf("\nA quantidade de visitas hoje foi de: %i", visitantes);
+    return (0);
+}
