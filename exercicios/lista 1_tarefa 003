@@ -1,10 +1,316 @@
 // ex 1 
-//correção do código A 
-  # include < stdio .h >
+//correção do código A: o tamanho de A exige que a variável seja do tipo "long",
+//e é necessário tirar os espaços presentes na primeira linha do código
+  # include<stdio.h>
   int main () {
     long n = 4000000000;
     printf ("%ld\n", n );
     return 0;
   }
 
-//correção do código B
+//correção do código B: a variável deve ser declarada antes do uso, e é necessário atribuir=lhe um valor para exibí-la,
+//e é necessário tirar os espaços presentes na primeira linha do código 
+  # include<stdio.h>
+  int main () {
+  int a = 2;
+  printf ("%d\n", a );
+  return 0;
+  }
+
+//correção do código C: é necessário tirar os espaços presentes na primeira linha do código 
+# include<stdio.h>
+ int main () {
+ printf ("%d", 4);
+ printf ("%d", 2);
+ return 0;
+}
+
+//correção do código D: é necessário tirar os espaços e acrescentar "&" para o endereço da variável
+# include<stdio.h>
+  int main () {
+  int a ;
+  scanf ("%d", &a );
+  printf ("%d", a );
+  return 0;
+  }
+
+
+//ex 2: programa que leia três números e os imprima na ordem inversa da digitada
+#include<stdio.h>
+
+ int main () {
+
+    int a, b, c;
+
+    printf("Digite o primeiro número: ");
+    scanf("%d", &a);
+    printf("Digite o segundo número: ");
+    scanf("%d", &b);
+    printf("Digite o terceiro número: ");
+    scanf("%d", &c);
+    printf("%d %d %d", c, b, a);
+    return(0);
+ }
+
+//ex 3: programa para simular uma conversa de computador com o usuário 
+#include<stdio.h>
+
+int main () {
+
+    char nome[30];
+    printf("Olá, eu sou o número 1! Qual é o seu nome?");
+    scanf("%s", &nome);
+    printf("Bem vindo ao clube, %s", nome);
+    return(0);
+
+}
+
+//ex 4: programa que recebe nome e idade de um indivíduo e imprime aproximadamente o número de dias de vida ele possui 
+#include<stdio.h>
+#include<locale.h>
+
+int main() {
+
+    setlocale(LC_ALL, "portuguese");
+
+    char nome[30];
+    int idade, dias;
+    printf("Insira seu nome: ");
+    scanf("%s", &nome);
+    printf("Insira sua idade: ");
+    scanf("%d", &idade);
+
+    dias = idade * 365;
+
+    printf("Seus dias de vida são: %d", dias);
+}
+
+//ex 5: programa que escaneie o raio de um círculo e imprima sua área
+#include<stdio.h>
+#include<math.h>
+#include<locale.h>
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+
+    float raio, area;
+    const double pi = 3.14159;
+
+    printf("Insira o valor do raio do círculo: ");
+    scanf("%f", &raio);
+
+    area = 2 * pi * raio;
+
+    printf("\nO valor da área do círculo é: %f", area);
+    return(0);
+}
+
+//ex 6: programa que calcule a quantidade necessária de latas de tinta para pintar uma parede
+//baseado na altura e largura das paredes e conteúdo das latas
+#include<stdio.h>
+#include<math.h>
+#include<locale.h>
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+
+    float altura, largura, area;
+
+    printf("\nInsira a altura da parede (m): ");
+    scanf("%f", &altura);
+    printf("\nInsira a largura da parede (m): ");
+    scanf("%f", &largura);
+
+    area = altura * largura;
+
+    float latas;
+
+    latas = (area * 300) / 2000;
+
+    printf("\nNúmero aproximado de latas de tinta que serão necessários para pintar a parede: %f", latas);
+
+    return(0);
+
+}
+
+//ex 7: programa que leia uma temperatura em graus Farenheit e a imprima em graus Centígrados 
+#include<stdio.h>
+#include<math.h>
+#include<locale.h>
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+
+    float C, F;
+
+    printf("\nInsira a temperatura em graus Farenheit: ");
+    scanf("%f", &F);
+
+    C = (5 * (F-32)) / 9;
+
+    printf("\nA temperatura em graus Centígrados é: %f", C);
+    return(0);
+
+}
+
+//ex 8: programa que calcule a massa de ar de um pneu
+
+#include<stdio.h>
+#include<math.h>
+#include<locale.h>
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+
+    float P, V, T, M;
+
+    printf("\nInsira o valor da pressão: ");
+    scanf("%f", &P);
+    printf("\nInsira o valor da temperatura: ");
+    scanf("%f", &T);
+    printf("\nInsira o valor do volume: ");
+    scanf("%f", &V);
+
+    M = (P * V) / (0.37 * (T + 460));
+
+    printf("\nO valor da massa de ar do pneu é: %f", M);
+    return(0);
+
+}
+
+//ex 9: programa que calcule o enésimo termo da P.A. 
+#include<stdio.h>
+#include<math.h>
+#include<locale.h>
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+
+    float a1, r, n, an;
+
+    printf("\nInsira o primeiro termo da P.A.: ");
+    scanf("%f", &a1);
+    printf("\nInsira a razão da P.A.: ");
+    scanf("%f", &r);
+    printf("\nQue n quer calcular? ");
+    scanf("%f", &n);
+
+    an = a1 + (n - 1) * r;
+
+    printf("\nO enésimo termo da P.A. é: %f", an);
+    return(0);
+}
+
+//ex 10: código que leia coeficientes de uma equação de segundo grau e imprime as raízes da função
+#include<stdio.h>
+#include<math.h>
+#include<locale.h>
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+
+    float a, b, c, x1, x2, delta;
+
+    printf("\nInsira o coeficiente a: ");
+    scanf("%f", &a);
+    printf("\nInsira o coeficiente b: ");
+    scanf("%f", &b);
+    printf("\nInsira o coeficiente c: ");
+    scanf("%f", &c);
+
+    delta = pow (b, 2) - (4 * a * c);
+
+    x1 = (-b + sqrt(delta))/2*a;
+    printf("\nx1 = %f", x1);
+
+    x2 = (-b - sqrt(delta))/2*a;
+    printf("\nx2 = %f", x2);
+    return(0);
+}
+
+//ex 11: programa para contar tipos de nota e montante do dinheiro 
+
+#include<stdio.h>
+#include<math.h>
+#include<locale.h>
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+
+    int montante, n1, n10, n50, n100;
+
+    printf("\nInsira o número de notas de 1 real: ");
+    scanf("%d", &n1);
+    printf("\nInsira o número de notas de 10 reais: ");
+    scanf("%d", &n10);
+    printf("\nInsira o número de notas de 50 reais: ");
+    scanf("%d", &n50);
+    printf("\nInsira o número de notas de 100 reais: ");
+    scanf("%d", &n100);
+
+    montante = (n1 * 1) + (n10 * 10) + (n50 * 50) + (n100 * 100);
+
+    printf("\nO valor do montante é: %d", montante);
+    return(0);
+}
+
+//ex 12: programa para deduzir de um valor em dinheiro quantas notas há de cada tipo 
+#include <stdio.h>
+#include<math.h>
+#include<locale.h>
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+
+    int valor, n100, n50, n10, n5, n1;
+
+    printf("Digite o valor em dinheiro: ");
+    scanf("%d", &valor);
+
+    n100 = valor / 100;
+    valor = valor % 100;
+
+    n50 = valor / 50;
+    valor = valor % 50;
+
+    n10 = valor / 10;
+    valor = valor % 10;
+
+    n5 = valor / 5;
+    valor = valor % 5;
+
+    n1 = valor;
+
+    printf("Notas de 100 reais: %d\n", n100);
+    printf("Notas de 50 reais: %d\n", n50);
+    printf("Notas de 10 reais: %d\n", n10);
+    printf("Notas de 5 reais: %d\n", n5);
+    printf("Notas de 1 real: %d\n", n1);
+    return 0;
+}
+
+//Desafio: cálculo do Dividendo Yeld das ações 
+
+#include<math.h>
+#include<stdio.h>
+#include<locale.h>
+
+int main () {
+    setlocale(LC_ALL, "portuguese");
+
+    float a;
+    printf("\nSobre qual ação quer calcular DY? (Digite 1, 2 ou 3)");
+    scanf("%f", &a);
+
+    if (a == 1)
+        a = (17 / 24) * 100;
+    if (a == 2)
+        a = (35 / 24,13) * 100;
+    else a = (25 / 11) * 100;
+
+    printf("\nO Dividend Yeld de sua ação é: %f", a);
+    return(0);
+
+}
+
+
