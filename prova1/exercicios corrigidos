@@ -1,1 +1,162 @@
+//ex 1: resposta C
+//ex 2: resposta B
+
+/*ex 3: Elaborar um programa em C que pergunte um valor em graus Fahrenheit e imprime no “prompt” o
+correspondente em graus Celsius usando as fórmulas que seguem. 
+a) Usar uma variável double para ler o valor em Fahrenheit e a fórmula:
+𝐶 = (𝐹 − 32.0) ∗ (5.0/9.0)              */
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+int main ()
+{
+   double F, C;
+
+   printf("\nDigite a temperatura em Fahrenheit: ");
+   scanf("%lf", &F);
+
+   //cálculos
+   C = (F-32)*(5.0/9.0);
+
+   printf("\nTemperatura em Celsius = %lf", C);
+
+   return 0;
+}
+
+//exibição: Digite a temperatura em Fahrenheit: 681
+//          Temperatura em Celsius: 360.555556
+
+/*b) Usar uma variável int para ler o valor em Fahrenheit e a fórmula:
+𝐶 = (𝐹 − 32) ∗ (5/9)
+A execução do seu código deve seguir as seguintes regras:
+• O valor a ser digitado em Fahrenheit (double): os 3 últimos dígitos do seu RA
+• O valor a ser digitado em Fahrenheit (int): os 3 últimos dígitos do seu RA
+Obs: cuidado com divisões inteiras. Explique caso isso aconteça.      */
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+int main ()
+{
+   int F, C;
+
+   printf("\nDigite a temperatura em Fahrenheit: ");
+   scanf("%d", &F);
+
+   //cálculos
+   C = (F-32)*(5.0/9.0);
+
+   printf("\nTemperatura em Celsius = %lf", C);
+
+   return 0;
+
+}
+
+//o código mostrará resultado 0, pois a divisão não resulta em número inteiro, portanto C = 0 nessas condições:
+// Temperatura em Fahrenheit: 681
+// Temperatura em Celsius: 0
+
+
+4) Você está desenvolvendo um sistema simples para uma estação meteorológica que analisa a temperatura
+atual e fornece uma previsão do tempo com base nessa temperatura. O programa deve solicitar ao usuário
+que insira a temperatura atual em graus Celsius e, em seguida, avaliar essa temperatura para fornecer uma
+previsão:
+• Se a temperatura for menor ou igual a 0°C, exiba "Geleira - Temperatura muito fria!"
+• Se a temperatura estiver entre 1°C e 15°C, exiba "Frio - Pode precisar de um casaco!"
+• Se a temperatura estiver entre 16°C e 25°C, exiba "Agradável - Tempo bom para sair!"
+• Se a temperatura estiver entre 26°C e 35°C, exiba "Quente - Ótimo para um dia de praia!"
+• Se a temperatura for maior que 35°C, exiba "Muito quente - Mantenha-se hidratado!"
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<locale.h>
+
+int main()
+{
+    setlocale(LC_ALL, "portuguese");
+
+    float T;
+    printf("\nEntre com a temp. em celsius: ");
+    scanf("%f", &T);
+
+    if(T<=0)
+    {
+        printf("\nGeleira-Temperatura muito fria!");
+    }
+
+    else if((T>=1)&&(T<=15))
+    {
+        printf("\nFrio-Pode precisar de um casaco!");
+    }
+
+    else if((T>=16)&&(T<=25))
+    {
+        printf("\nAgradável-Tempo bom para sair!");
+    }
+
+    else if((T>=26)&&(T<=35))
+    {
+        printf("\nQuente-ótimo para um dia de praia!");
+    }
+    else
+    {
+        printf("\nMuito quente-Mantenha-se hidratado!");
+    }
+    return 0;
+}
+
+
+
+5) Em um depósito de armazenamento de alimentos, a temperatura ambiente é crítica para evitar a deterioração
+dos produtos. Crie um programa que peça ao usuário a temperatura atual do depósito. Com base na
+temperatura, o programa deve classificar o nível de risco para os alimentos:
+• Se a temperatura estiver abaixo de -10°C, exiba "Risco Baixo - Armazenamento ideal para alimentos
+congelados."
+• Se a temperatura estiver entre -10°C e 0°C (inclusive), exiba "Risco Moderado - Condições aceitáveis
+para armazenamento refrigerado."
+• Se a temperatura estiver entre 1°C e 10°C (inclusive) ou exatamente 15°C, exiba "Risco Elevado -
+Monitore a temperatura."
+• Se a temperatura for maior que 10°C e não for exatamente 15°C, exiba "Risco Crítico - Ação Imediata
+Necessária!"
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<locale.h>
+
+int main()
+{
+    setlocale(LC_ALL, "portuguese");
+
+    float T;
+    printf("\nEntre com a temperatura do depósito: ");
+    scanf("%f", &T);
+
+    if(T<-10)
+    {
+        printf("\nRisco baixo - Armazenamento ideal para alimentos congelados");
+    }
+
+    else if((T>=-10)&&(T<=0))
+    {
+        printf("\nRisco moderado - Condições aceitáveis para armazenamento refrigerado");
+    }
+
+    else if((T>=1)&&(T<=10)||(T==15))
+    {
+        printf("\nRisco elevado - Monitore a temperatura");
+    }
+    else
+    {
+        printf("\nRisco crítico - Ação imediata necessária!");
+    }
+    return 0;
+}
+
+
 
