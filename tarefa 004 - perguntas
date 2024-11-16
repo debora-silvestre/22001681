@@ -1,0 +1,105 @@
+1) O vetor deve ser declarado como: 
+int cameraData[10]; 
+onde 'int' é classe do vetor (inteiros), cameraData é o nome e [10] o número de valores que o vetor pode armazenar.
+
+2) analogRead é uma fu
+nção que faz a leitura de uma porta analógica, nesse caso a porta A1. Ela está armazenando o valor 
+retornado no índice 3 (posição 4) do vetor cameraData.
+
+3) Deve-se especificar a classe do vetor, seu nome, o número de valores que armazenará e, por último, atribuir-lhe os valores 
+na ordem dos índices, dessa forma:
+float temperaturas[5] = {25.5, 26.0, 24.8, 27.3, 26.5}; 
+
+4) A função Serial.println() imprime uma mensagem no monitor serial e logo após adiciona uma nova linha. Nesse caso, ele 
+percorreria um vetor chamado ledPins e, a cada iteração, exibiria o valor contido no índice do respectivo led. 
+
+5) Para que o código funcionasse no Arduino IDE, deve haver um vetor ledPins inicializado, com 4 valores armazenados nele. O 
+monitor serial deve ser inicializado dentro da função void setup, e a parte que exibe os valores no monitor deve ser colocada
+dentro de void loop. 
+Exemplo: 
+
+int ledPins[4] = {2, 3, 4, 5}; //vetor declarado
+
+void setup() {
+    Serial.begin(9600); // monitor inicializado
+}
+
+void loop() {
+    for (int i = 0; i < 4; i++) {
+        Serial.println(ledPins[i]); // exibe valores no monitor
+    }
+    delay(1000); 
+}
+
+6) Primeiramente, declara-se um vetor randomValues com 5 elementos. Depois, escreve-se a função randomSeed para gerar números 
+aleatórios e embaralha-los. Para que esses números sejam novos a cada iteração do código, pode-se unir rasdomSeed a uma porta
+analógica (ex: randomSeed(analogRead(0))) e pode-se definir dois parâmetros, um inicial e um final, para que os números 
+gerados permaneçam entre eles.
+Exemplo: 
+
+int randomValues[5]; // vetor 
+
+void setup() {
+    Serial.begin(9600);
+    randomSeed(analogRead(0)); // gerador de números aleatórios
+
+    for (int i = 0; i < 5; i++) {
+        randomValues[i] = random(0, 101); // parâmetros inicial e final 
+        Serial.println(randomValues[i]); // exibe no monitor serial
+    }
+}
+
+7) O loop descrito percorre um vetor sensorReadings enquanto o contador for menor que o tamanho do vetor. O 'if' abaixo, 
+aliado ao 'break' no final, funciona como condição de parada, ou seja, o loop será interrompido no caso de o valor lido 
+no sensor ser igual a 150. 
+
+8) Essa função fará o cálculo do tamanho do vetor entre parênteses (sensorData) através da divisão do tamanho total do vetor
+pelo tamanho de um elemento (cálculo feito em bytes, devolve o número de elementos do vetor). 
+
+9) 
+a) A primeira linha da matriz apresenta os valores de leitura de temperatura em cinco momentos diferentes (colunas), no 
+primeiro local de monitoramento (linha). 
+b) Os dados sobre a umidade no segundo local de monitoramento estão armazenados na sebgunda linha da matriz. Portanto, a 
+média dos valores de umidade registrados são dados por: 
+(45 + 38 + 42 + 40 + 37) / 5 = 40.4
+c) Ela atingiu o máximo no terceiro momento de medição, visto que o maior valor da terceira linha é 420, na terceira posição.
+d) Utilizando o início do código apresentado: 
+
+int ambientData[3][5] = {
+    {22, 25, 23, 21, 24},
+    {45, 38, 42, 40, 37},
+    {400, 380, 420, 410, 390} //matriz c/ dados
+};
+
+int totalLocais = 3;
+int totalLeituras = 5;
+int somaTemperaturas = 0;
+
+void setup() {
+    Serial.begin(9600);
+
+    for (int i = 0; i < totalLocais; i++) { // varre as 3 linhas 
+        for (int j = 0; j < totalLeituras; j++) { //dentro das 3 linhas, varre as 5 colunas
+            somaTemperaturas += ambientData[0][j]; // linha 0 (temperatura), todas as colunas
+        }
+    }
+
+    float mediaTemperatura = somaTemperaturas / totalLeituras;
+    Serial.print("Média de temperatura: "); //printa frase 
+    Serial.println(mediaTemperatura); //printa valor
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
