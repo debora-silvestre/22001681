@@ -418,6 +418,210 @@ int main() {
 }
 
 //desafio 2
+#include <stdio.h>
+#include <locale.h>
+#include <string.h>
+
+void controleMovimento() {
+    float dist;
+    char dir[10];
+    char sair[] = "sair";
+
+    printf("Programa para controle do movimento do robô.\n");
+    printf("Digite direções para movê-lo. Digite 'sair' para parar o programa.\n");
+
+    do {
+        printf("\nEm que direção deseja mover o robô? \n(Esquerda, direita, frente ou trás?) ");
+        scanf("%s", dir);
+
+        if (strcmp(dir, sair) == 0) {
+            printf("Programa encerrado.\n");
+            break;
+        }
+
+        printf("Quantos metros deseja mover o robô? ");
+        scanf("%f", &dist);
+
+        printf("Movendo o robô %.2f metros para %s.\n", dist, dir);
+    } while (1);
+}
+
+void leituraSensores() {
+    float dist;
+    char continuar;
+
+    printf("Leitura de sensores de distância.\n");
+    printf("Digite 0 caso queira encerrar a leitura.\n");
+
+    do {
+        printf("\nInsira a distância medida pelo sensor: ");
+        scanf("%f", &dist);
+
+        if (dist < 10) {
+            printf("\nDistância = %.2f - Valor abaixo de 10 cm!\n", dist);
+            break;
+        }
+        printf("\nDistância = %.2f\n", dist);
+
+        printf("\nContinuar a leitura? (s = sim; n = não) ");
+        scanf(" %c", &continuar);
+
+        if (continuar == 'n' || continuar == 'N') {
+            printf("Programa encerrado.\n");
+            break;
+        }
+    } while (1);
+}
+
+void controleAtuacao() {
+    int acao, continuar;
+
+    printf("Controle de atuação do robô.\n");
+    printf("Selecione uma das seguintes atividades para que seja feita pelo robô (digite o número correspondente):\n");
+    printf("(1) Trocar lâmpada\n");
+    printf("(2) Aspirar chão\n");
+    printf("(3) Tocar música\n");
+    printf("(4) Mover um braço\n");
+    printf("(5) Programar alarme\n");
+
+    do {
+        printf("\nDigite a ação desejada: ");
+        scanf("%d", &acao);
+
+        switch (acao) {
+            case 1:
+                printf("O robô irá trocar a lâmpada.\n");
+                break;
+            case 2:
+                printf("O robô irá aspirar o chão.\n");
+                break;
+            case 3:
+                printf("O robô irá tocar música.\n");
+                break;
+            case 4:
+                printf("O robô irá mover um braço.\n");
+                break;
+            case 5:
+                printf("O robô irá programar um alarme.\n");
+                break;
+            default:
+                printf("Ação inválida!\n");
+        }
+
+        printf("\nDeseja selecionar uma nova ação? (1 = Sim, 0 = Não): ");
+        scanf("%d", &continuar);
+    } while (continuar == 1);
+}
+
+void monitoramentoBateria() {
+    float bateria;
+    int continuar;
+
+    do {
+        printf("Monitoramento de bateria do robô.\n");
+        printf("Insira o percentual da bateria do robô: ");
+        scanf("%f", &bateria);
+
+        if (bateria < 20) {
+            printf("Bateria baixa! Recarregue o robô.\n");
+        } else if (bateria == 100) {
+            printf("Nível da bateria: %.2f%%. Robô totalmente carregado.\n", bateria);
+        } else {
+            printf("Nível da bateria: %.2f%%\n", bateria);
+        }
+
+        printf("Deseja inserir uma nova leitura? (1 = Sim, 0 = Não): ");
+        scanf("%d", &continuar);
+    } while (continuar == 1);
+}
+
+void navegacaoAutonoma() {
+    int x = 2, y = 2;
+    char dir;
+
+    printf("Simulação de Navegação Autônoma (limitado a grid 5x5).\n");
+    printf("Comandos:\n");
+    printf("c - mover para cima\n");
+    printf("b - mover para baixo\n");
+    printf("e - mover para esquerda\n");
+    printf("d - mover para direita\n");
+    printf("p - parar o programa\n");
+    printf("\nO robô começa na posição (%d, %d).\n", x, y);
+
+    while (1) {
+        printf("\nDigite o comando para mover o robô: ");
+        scanf(" %c", &dir);
+
+        switch (dir) {
+            case 'c':
+                if (y > 0) y--;
+                else printf("Movimento inválido! O robô não pode sair do grid.\n");
+                break;
+            case 'b':
+                if (y < 4) y++;
+                else printf("Movimento inválido! O robô não pode sair do grid.\n");
+                break;
+            case 'e':
+                if (x > 0) x--;
+                else printf("Movimento inválido! O robô não pode sair do grid.\n");
+                break;
+            case 'd':
+                if (x < 4) x++;
+                else printf("Movimento inválido! O robô não pode sair do grid.\n");
+                break;
+            case 'p':
+                printf("Programa encerrado pelo usuário.\n");
+                return;
+            default:
+                printf("Comando inválido! Use c, b, e, d ou p.\n");
+        }
+        printf("Posição atual do robô: (%d, %d).\n", x, y);
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+
+    int comando, a;
+
+    do {
+        printf("\nMenu Principal - Funcionalidades do robô.\n");
+        printf("(1) Controle de Movimento (10x10)\n");
+        printf("(2) Leitura dos Sensores de Distância\n");
+        printf("(3) Controle de Atuação - Funcionalidades\n");
+        printf("(4) Monitoramento de Bateria\n");
+        printf("(5) Navegação autônoma\n");
+        printf("Digite o número do comando para executá-lo: ");
+        scanf("%d", &comando);
+
+        switch (comando) {
+            case 1:
+                controleMovimento();
+                break;
+            case 2:
+                leituraSensores();
+                break;
+            case 3:
+                controleAtuacao();
+                break;
+            case 4:
+                monitoramentoBateria();
+                break;
+            case 5:
+                navegacaoAutonoma();
+                break;
+            default:
+                printf("Comando inválido! Tente novamente.\n");
+        }
+
+        printf("\nDeseja voltar ao menu principal? (1 = Sim, 0 = Não): ");
+        scanf("%d", &a);
+    } while (a == 1);
+
+    printf("Programa encerrado.\n");
+    return 0;
+}
+
 
 
 
