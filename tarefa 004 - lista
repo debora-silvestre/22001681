@@ -657,7 +657,8 @@ na ordem dos índices, dessa forma:
 float temperaturas[5] = {25.5, 26.0, 24.8, 27.3, 26.5}; 
 
 4) A função Serial.println() imprime uma mensagem no monitor serial e logo após adiciona uma nova linha. Nesse caso, ele 
-percorreria um vetor chamado ledPins e, a cada iteração, exibiria o valor contido no índice do respectivo led. 
+percorreria um vetor chamado ledPins de tamanho 4 e, a cada iteração, exibiria o valor contido no índice do respectivo led 
+(as portas nas quais estão inseridos). 
 
 5) Para que o código funcionasse no Arduino IDE, deve haver um vetor ledPins inicializado, com 4 valores armazenados nele. O 
 monitor serial deve ser inicializado dentro da função void setup, e a parte que exibe os valores no monitor deve ser colocada
